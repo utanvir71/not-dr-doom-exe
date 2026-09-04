@@ -7,9 +7,9 @@ public class RagdollMuscle: MonoBehaviour
     public Rigidbody body;
     public Rigidbody parentBody;
     [Header("Muscle Settings")]
-    public float strength = 1000f;
-    public float damping = 40f;
-    public float maxTorque = 2500f;
+    public float strength = 2000f;
+    public float damping = 100f;
+    public float maxTorque = 4000f;
     [Header("Target Pose")]
     public Vector3 targetEulerOffset = Vector3.zero;
     private Quaternion startingRelativeRotation;
@@ -53,7 +53,7 @@ public class RagdollMuscle: MonoBehaviour
         Vector3 finalTorque = springTroque + dampingTorque;
         finalTorque = Vector3.ClampMagnitude(finalTorque, maxTorque);
         body.AddTorque(finalTorque, ForceMode.Acceleration);
-        parentBody.AddTorque(-finalTorque, ForceMode.Acceleration);
+        // parentBody.AddTorque(-finalTorque, ForceMode.Acceleration);
     }
     public void ResetTarget()
     {
