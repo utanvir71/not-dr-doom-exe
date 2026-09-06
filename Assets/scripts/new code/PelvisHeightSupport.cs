@@ -70,7 +70,7 @@ public class PelvisHeightSupport : MonoBehaviour
             supportAcceleration = Mathf.Clamp(supportAcceleration, 0f, maxAcceleration);
             //apply the calculation acceleration straing upward.
             pelvis.AddForce(Vector3.up * supportAcceleration, ForceMode.Acceleration);
-
+            
 
         }
         else
