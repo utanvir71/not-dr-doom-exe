@@ -1,8 +1,9 @@
 using System;
+using NUnit.Framework.Constraints;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-public class ForwardBackStepRecovery : MonoBehaviour
+public class ProceduralRecoveryStep : MonoBehaviour
 {
     [Header("Reference")]
     public Rigidbody pelvis;
@@ -15,16 +16,17 @@ public class ForwardBackStepRecovery : MonoBehaviour
     [Header("Step Detection")]
     //!Max must drift faster than this before he takes a step/
     public float triggerSpeed = 0.35f;
+
     
     [Header("Step Pose")]
-    public float forwardStepAngle = 40f;
-    public float backwardStepAngle = -40f;
-    public float kneeBendAngle = 55f;
+    public float forwardStepAngle = 50f;
+    public float backwardStepAngle = -500f;
+    public float kneeBendAngle = 110f;
 
     [Header("Bone Directions")]
-    public float leftThighSign = 1f;
+    public float leftThighSign = -1f;
     public float rightThighSign = -1f;
-    public float leftKneeSign = 1f;
+    public float leftKneeSign = -1f;
     public float rightKneeSign = -1f;
 
     [Header("Timing")]
@@ -65,6 +67,7 @@ public class ForwardBackStepRecovery : MonoBehaviour
         Recover
     }
     private StepPhase phase = StepPhase.Idle;
+    private bool fallingRight;
 
     
 
@@ -93,6 +96,7 @@ public class ForwardBackStepRecovery : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        
         //Count the cooldown down toward zero. While this avobe 0 Max cannot start another step.
         if(cooldownTimer > 0f)
         {
@@ -108,6 +112,7 @@ public class ForwardBackStepRecovery : MonoBehaviour
             pelvis.linearVelocity,
             forward
         );
+
         //! --- Idle ----
         //f Max is currently waiting and not already stepping..
         if(phase == StepPhase.Idle)
@@ -248,6 +253,8 @@ public class ForwardBackStepRecovery : MonoBehaviour
             SetjointXOffset(rightLowerLeg, rightLowerLegStart, kneeAngle * rightKneeSign);
         }
     }
+
+
     private void SetBothLegsNeutral()
     {
         SetjointXOffset(leftThigh, leftThighStart, 0f);//put the left thigh back at its original standing pose.
@@ -255,6 +262,9 @@ public class ForwardBackStepRecovery : MonoBehaviour
         SetjointXOffset(leftLowerLeg, leftLowerLegStart, 0f);
         SetjointXOffset(rightLowerLeg, rightLowerLegStart, 0f);
     }
+
+
+    // Moves leg forward or backward.
     private void SetjointXOffset(ConfigurableJoint joint, Quaternion startingRotation, float xAngle)
     {
         //Create a rotation around the bone's X axis.
@@ -266,6 +276,8 @@ public class ForwardBackStepRecovery : MonoBehaviour
         //Convert our normal local rotation into the special rotation format ConfigurableJoint.targetRotation expects.
         SetTargetRotationLocal(joint, desiredRotation, startingRotation);
     }
+
+
     private void SetTargetRotationLocal(ConfigurableJoint joint, Quaternion TargetLocalRotation, Quaternion startLocalRotation)
     {
         Vector3 right = joint.axis; //get the configurableJoint's man axis.
