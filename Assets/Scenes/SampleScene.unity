@@ -879,6 +879,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -3432905540491037859, guid: 913973b93c39640a4ae129e127f1dcac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2056597596}
+    - targetCorrespondingSourceObject: {fileID: -3432905540491037859, guid: 913973b93c39640a4ae129e127f1dcac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2056597597}
+    - targetCorrespondingSourceObject: {fileID: -3432905540491037859, guid: 913973b93c39640a4ae129e127f1dcac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2056597598}
     - targetCorrespondingSourceObject: {fileID: 6127416658928492787, guid: 913973b93c39640a4ae129e127f1dcac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1066054698}
@@ -1072,7 +1078,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularZLimit:
-    limit: 0
+    limit: 60
     bounciness: 0
     contactDistance: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
@@ -1170,7 +1176,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317371868}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1f626b67f83843f68c720bba9d5a0aa, type: 3}
   m_Name: 
@@ -1716,7 +1722,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularZLimit:
-    limit: 0
+    limit: 60
     bounciness: 0
     contactDistance: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
@@ -2363,7 +2369,7 @@ Transform:
   m_GameObject: {fileID: 2014413793}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.695, y: 1.43937, z: 16.87}
+  m_LocalPosition: {x: 1.695, y: 1.43937, z: 14.084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2443,13 +2449,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  targetHeight: 1.2
+  targetHeight: 1.19
   raycastDistance: 2
   springStrength: 40
   damping: 8
   maxAcceleration: 50
   currentHeight: 0
-  supportAcceleration: 0
+  supportAcceleration: -6.12
 --- !u!114 &2056597596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2468,6 +2474,63 @@ MonoBehaviour:
   angularDamping: 50
   maxAngularAcceleration: 1000
   tiltAngle: 0
+--- !u!114 &2056597597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056597591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8460fdd382d01445394a667900dec953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PhysicsMoveMentController
+  pelvis: {fileID: 0}
+  movementReference: {fileID: 1110775324}
+  moveAcceleration: 7
+--- !u!114 &2056597598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056597591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff594a2697ee42a7b67cd4ebea37142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProceduralMovement
+  pelivs: {fileID: 0}
+  movementReference: {fileID: 1110775324}
+  leftThigh: {fileID: 1066054701}
+  rightThigh: {fileID: 1552910672}
+  leftLowerLeg: {fileID: 1698178914}
+  rightLowerLeg: {fileID: 1549989101}
+  leftThighStart: {x: 0, y: 0, z: 0, w: 0}
+  rightThighStart: {x: 0, y: 0, z: 0, w: 0}
+  leftLowerLegStart: {x: 0, y: 0, z: 0, w: 0}
+  rightLowerLegStart: {x: 0, y: 0, z: 0, w: 0}
+  forwardThighAngle: 55
+  lowerLegCounterAngle: -120
+  lifttime: 0.13
+  reachTime: 0.13
+  plantTime: 0.11
+  backwardThighAngle: 60
+  backwardLowerLegAngle: 120
+  sidewaysThighAngle: 60
+  leftSideSign: -1
+  rightSideSign: 1
+  sideShiftTime: 0.12
+  sideShiftAcceleration: 3
+  leftThighSign: -1
+  rightThighSign: -1
+  leftLowerLegSign: -1
+  rightLowerLegSign: -1
+  stepDirection: 0
+  walkPhase: 0
+  currentStepUsesLeft: 1
+  forwardInput: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
