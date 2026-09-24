@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 //controls max procedural leg movement while he is intentionally moving.
