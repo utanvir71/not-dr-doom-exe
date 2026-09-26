@@ -112,3 +112,110 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# =========================================================
+# UNITY
+# =========================================================
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+Recordings/
+
+# Unity Asset Store tools
+AssetStoreTools*
+
+# Crash reports
+sysinfo.txt
+
+# =========================================================
+# UNITY GENERATED IDE FILES
+# =========================================================
+
+*.csproj
+*.sln
+*.slnx
+*.unityproj
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity generated meta files for IDE/project files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# =========================================================
+# PYTHON / ML-AGENTS
+# =========================================================
+
+# Max training virtual environment
+.train_max_venv/
+
+# Other common virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# ML-Agents training output
+results/
+summaries/
+models/
+
+# TensorBoard / training logs
+events.out.tfevents.*
+*.tfevents.*
+
+# =========================================================
+# VS CODE / IDE
+# =========================================================
+
+.vscode/
+.idea/
+
+# Rider
+.idea/
+*.sln.iml
+
+# =========================================================
+# macOS
+# =========================================================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# =========================================================
+# BUILD / EXPORT FILES
+# =========================================================
+
+*.apk
+*.aab
+*.ipa
+*.app
+*.exe
+
+# =========================================================
+# MISC
+# =========================================================
+
+*.tmp
+*.temp
+*.log

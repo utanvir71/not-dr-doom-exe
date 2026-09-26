@@ -122,8 +122,9 @@ public class ProceduralMovement : MonoBehaviour
     private void Update()
     {
         //read forward/bacward moveement input
-        forwardInput = Input.GetAxisRaw("Vertical");
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        // forwardInput = Input.GetAxisRaw("Vertical");
+        // horizontalInput = Input.GetAxisRaw("Horizontal");
+
     }
 
     private void FixedUpdate()
@@ -612,5 +613,11 @@ public class ProceduralMovement : MonoBehaviour
         resultRotation *= worldToJointSpace;
         //This is the actual physical target the configurableJoint will try to reach.
         joint.targetRotation = resultRotation;
+    }
+
+    public void SetMovementInput(float forward, float horizontal)
+    {
+        forwardInput = forward;
+        horizontalInput = horizontal;
     }
 }
