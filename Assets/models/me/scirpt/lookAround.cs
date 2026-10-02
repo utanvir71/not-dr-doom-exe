@@ -1,30 +1,44 @@
 using UnityEngine;
 
-class lookAround : MonoBehaviour
+public class lookAround : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
-    public Transform player;
+    [SerializeField] private float mouseSensitivity = 2f;
+    [SerializeField] private float verticalLimit = 90f;
+    [SerializeField] private Transform forwardReference;
+    [SerializeField] private Transform headPos;
+    [SerializeField] private Transform body;
 
-    public float yRotation = 0f;
+    private float yaw;
+    private float pitch;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        yRotation -= mouseY;
-        yRotation = Mathf.Clamp(yRotation, -90f, 90f);
+        yaw += mouseX;
+        pitch -= mouseY;
 
-        player.Rotate(Vector3.up * mouseX);
-        transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        pitch = Mathf.Clamp(pitch, -verticalLimit, verticalLimit);
+
+        transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
+        forwardReference.rotation = Quaternion.Euler(0f, yaw, 0f);
+        body.rotation = Quaternion.Euler(0f, yaw, 0f);
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true; 
+            Cursor.visible = true;
         }
+    }
+    void LateUpdate()
+    {
+        transform.position = headPos.position;
     }
 }

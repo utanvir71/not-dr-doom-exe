@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class attack : MonoBehaviour
 {
-    public Animator anim;
+    [SerializeField] private Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if(anim == null)
+            anim = GetComponent<Animator>();
         anim.SetBool("isAttack", false);
     }
 

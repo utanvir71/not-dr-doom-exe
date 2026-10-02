@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using NUnit.Framework;
 using TMPro;
 using Unity.VisualScripting;
@@ -12,6 +13,7 @@ public class CharecterContoller : MonoBehaviour
     public float speed = 10;
     public float jumpForce = 12;
     public bool isGrounded = true;
+    [SerializeField] private Transform forwardReference;
     
 
 
@@ -37,7 +39,7 @@ public class CharecterContoller : MonoBehaviour
     void FixedUpdate()
     {
 
-        Vector3 move = transform.forward * verticalMovement + transform.right * horizontalMovement;
+        Vector3 move = forwardReference.forward * verticalMovement + transform.right * horizontalMovement;
         Vector3 moveDirection = move.normalized;
         playerrb.linearVelocity = new Vector3(moveDirection.x * speed, playerrb.linearVelocity.y, moveDirection.z * speed);
         if (isJump)
