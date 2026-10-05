@@ -218,4 +218,4 @@ events.out.tfevents.*
 
 *.tmp
 *.temp
-*.log
+*.logBuild.zip
